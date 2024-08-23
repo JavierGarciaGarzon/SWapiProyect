@@ -10,12 +10,10 @@ import com.diverger.swapi.domain.model.Vehicle;
 import com.diverger.swapi.domain.service.PersonDomainService;
 import com.diverger.swapi.infrastructure.client.SwapiClient;
 import com.diverger.swapi.infrastructure.dto.*;
-import com.diverger.swapi.infrastructure.response.PeopleSearch;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PersonApplicationService {
@@ -25,10 +23,6 @@ public class PersonApplicationService {
     public PersonApplicationService(SwapiClient swapiClient, PersonDomainService personDomainService) {
         this.swapiClient = swapiClient;
         this.personDomainService = personDomainService;
-    }
-
-    public PeopleSearch findByName(String name) {
-        return swapiClient.getPersonByName(name);
     }
 
     public List<PersonInfoResponse> getPersonInfoByName(String name) {
@@ -44,22 +38,20 @@ public class PersonApplicationService {
                     .toList();
 
             List<Vehicle> vehicles = vehicleDtos.stream()
-                    .map(VehicleMapper::toDomain)
-                    .collect(Collectors.toList());
+                    .map(VehicleMapper::toDomain).toList();
 
             List<StarshipDto> starshipDtos = personDto.getStarships().stream()
                     .map(swapiClient::getStarshipByUrl)
                     .toList();
 
             List<Starship> starships = starshipDtos.stream()
-                    .map(StarshipMapper::toDomain)
-                    .collect(Collectors.toList());
+                    .map(StarshipMapper::toDomain).toList();
 
             String fastestVehicleDriven = personDomainService.findFastestVehicleDriven(vehicles, starships);
 
             List<FilmDto> filmDtos = personDto.getFilms().stream()
-                    .map(swapiClient::getFilmByUrl)
-                    .collect(Collectors.toList());
+                    .map(swapiClient::getFilmByUrl).toList();
+
             PersonInfoResponse personInfoResponse = PersonMapper.toResponse(person, planetDto.getName(), fastestVehicleDriven, filmDtos);
             personInfoResponses.add(personInfoResponse);
         }
