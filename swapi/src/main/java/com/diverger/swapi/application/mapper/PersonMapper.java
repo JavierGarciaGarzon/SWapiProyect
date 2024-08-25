@@ -7,9 +7,11 @@ import com.diverger.swapi.infrastructure.dto.FilmDto;
 import com.diverger.swapi.infrastructure.dto.PersonDto;
 import com.diverger.swapi.infrastructure.dto.StarshipDto;
 import com.diverger.swapi.infrastructure.dto.VehicleDto;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class PersonMapper {
     public static PersonDto toDto(Person person, List<VehicleDto> vehicleDtos, List<StarshipDto> starshipDtos, List<FilmDto> filmDtos) {
         return PersonDto.builder()
@@ -30,7 +32,7 @@ public class PersonMapper {
     }
 
 
-    public static PersonInfoResponse toResponse(PersonDto person) {
+    public PersonInfoResponse toResponse(PersonDto person) {
         List<FilmResponse> filmResponses = person.getFilms().stream()
                 .map(filmDto -> new FilmResponse(filmDto.getTitle(), filmDto.getReleaseDate())).toList();
 
