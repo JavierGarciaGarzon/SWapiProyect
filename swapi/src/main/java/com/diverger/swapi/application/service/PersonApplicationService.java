@@ -2,59 +2,25 @@ package com.diverger.swapi.application.service;
 
 import com.diverger.swapi.application.dto.PersonInfoResponse;
 import com.diverger.swapi.application.mapper.PersonMapper;
-import com.diverger.swapi.application.mapper.StarshipMapper;
-import com.diverger.swapi.application.mapper.VehicleMapper;
-import com.diverger.swapi.domain.model.Person;
-import com.diverger.swapi.domain.model.Starship;
-import com.diverger.swapi.domain.model.Vehicle;
 import com.diverger.swapi.domain.service.PersonDomainService;
-import com.diverger.swapi.infrastructure.client.SwapiClient;
-import com.diverger.swapi.infrastructure.dto.*;
+import org.springdoc.core.converters.models.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class PersonApplicationService {
-    private final SwapiClient swapiClient;
+
     private final PersonDomainService personDomainService;
 
-    public PersonApplicationService(SwapiClient swapiClient, PersonDomainService personDomainService) {
-        this.swapiClient = swapiClient;
+    public PersonApplicationService(PersonDomainService personDomainService) {
         this.personDomainService = personDomainService;
     }
 
-    public List<PersonInfoResponse> getPersonInfoByName(String name) {
-        List<PersonDto> people = swapiClient.getPersonByName(name).getResults();
-        List<PersonInfoResponse> personInfoResponses = new ArrayList<>();
-        for (PersonDto personDto : people) {
-            Person person = PersonMapper.toDomain(personDto);
-
-            PlanetDto planetDto = swapiClient.getPlanetByUrl(personDto.getHomeworld());
-
-            List<VehicleDto> vehicleDtos = personDto.getVehicles().stream()
-                    .map(swapiClient::getVehicleByUrl)
-                    .toList();
-
-            List<Vehicle> vehicles = vehicleDtos.stream()
-                    .map(VehicleMapper::toDomain).toList();
-
-            List<StarshipDto> starshipDtos = personDto.getStarships().stream()
-                    .map(swapiClient::getStarshipByUrl)
-                    .toList();
-
-            List<Starship> starships = starshipDtos.stream()
-                    .map(StarshipMapper::toDomain).toList();
-
-            String fastestVehicleDriven = personDomainService.findFastestVehicleDriven(vehicles, starships);
-
-            List<FilmDto> filmDtos = personDto.getFilms().stream()
-                    .map(swapiClient::getFilmByUrl).toList();
-
-            PersonInfoResponse personInfoResponse = PersonMapper.toResponse(person, planetDto.getName(), fastestVehicleDriven, filmDtos);
-            personInfoResponses.add(personInfoResponse);
-        }
-        return personInfoResponses;
+    public List<PersonInfoResponse> getPersonInfoByName(String name, Integer page) {
+          return personDomainService.getPersonInfoByName(name, page).stream()
+                  .map(PersonMapper::toResponse)
+                  .toList();
     }
 }
