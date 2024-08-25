@@ -1,5 +1,6 @@
 package com.diverger.swapi.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,6 @@ public class Film {
     private String openingCrawl;
     private String director;
     private String producer;
+    @JsonProperty("release_date")
     private String releaseDate;
 }

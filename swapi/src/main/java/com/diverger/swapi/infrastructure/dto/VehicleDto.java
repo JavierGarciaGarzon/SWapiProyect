@@ -1,11 +1,13 @@
 package com.diverger.swapi.infrastructure.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class VehicleDto {
     private String name;
-    @JsonProperty("max_atmosphering_speed")
-    private String maxAtmospheringSpeed;
+    private int maxAtmospheringSpeed;
 }

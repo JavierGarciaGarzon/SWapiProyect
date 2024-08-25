@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Planet {
     private String name;
-    private int rotationPeriod;
-    private int orbitalPeriod;
-    private int diameter;
+    private String rotationPeriod;
+    private String orbitalPeriod;
+    private String diameter;
     private String climate;
 }

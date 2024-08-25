@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonInfoResponse {
+public class PersonInfoResponse{
     private String name;
     private String birthYear;
     private String gender;
