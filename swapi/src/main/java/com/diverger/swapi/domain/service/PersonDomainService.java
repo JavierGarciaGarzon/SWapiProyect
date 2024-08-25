@@ -7,8 +7,10 @@ import com.diverger.swapi.application.mapper.StarshipMapper;
 import com.diverger.swapi.application.mapper.VehicleMapper;
 import com.diverger.swapi.domain.model.Person;
 import com.diverger.swapi.infrastructure.client.SwapiClient;
-import com.diverger.swapi.infrastructure.dto.*;
-import org.springdoc.core.converters.models.Pageable;
+import com.diverger.swapi.infrastructure.dto.FilmDto;
+import com.diverger.swapi.infrastructure.dto.PersonDto;
+import com.diverger.swapi.infrastructure.dto.StarshipDto;
+import com.diverger.swapi.infrastructure.dto.VehicleDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

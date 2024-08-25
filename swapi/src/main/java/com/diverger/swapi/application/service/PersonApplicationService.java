@@ -20,8 +20,8 @@ public class PersonApplicationService {
     }
 
     public List<PersonInfoResponse> getPersonInfoByName(String name, Integer page) {
-          return personDomainService.getPersonInfoByName(name, page).stream()
-                  .map(personMapper::toResponse)
-                  .toList();
+        return personDomainService.getPersonInfoByName(name, page).stream()
+                .map(personMapper::toResponse)
+                .toList();
     }
 }

@@ -1,5 +1,6 @@
 package com.diverger.swapi.application.service;
 
+import com.diverger.swapi.application.dto.PersonInfoResponse;
 import com.diverger.swapi.application.mapper.PersonMapper;
 import com.diverger.swapi.domain.service.PersonDomainService;
 import com.diverger.swapi.infrastructure.dto.PersonDto;
@@ -7,19 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
-import com.diverger.swapi.application.dto.PersonInfoResponse;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
-public class PersonApplicationServiceTests {
+class PersonApplicationServiceTests {
 
     @InjectMocks
     private PersonApplicationService personApplicationService;
@@ -31,7 +29,7 @@ public class PersonApplicationServiceTests {
     private PersonDomainService personDomainService;
 
     @Test
-    public void testGetPersonInfoByName() {
+    void testGetPersonInfoByName() {
         PersonDto personDto = new PersonDto();
         personDto.setFilms(Collections.emptyList());
         personDto.setVehicles(Collections.emptyList());

@@ -14,10 +14,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Collections;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @WebMvcTest(PersonController.class)
-public class PersonControllerTests {
+class PersonControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -26,7 +26,7 @@ public class PersonControllerTests {
     private PersonApplicationService personApplicationService;
 
     @Test
-    public void testGetPersonInfoSuccess() throws Exception {
+    void testGetPersonInfoSuccess() throws Exception {
         PersonInfoResponse personInfo = new PersonInfoResponse();
         when(personApplicationService.getPersonInfoByName("Luke", 1))
                 .thenReturn(Collections.singletonList(personInfo));
@@ -40,7 +40,7 @@ public class PersonControllerTests {
     }
 
     @Test
-    public void testGetPersonInfoNotFound() throws Exception {
+    void testGetPersonInfoNotFound() throws Exception {
         when(personApplicationService.getPersonInfoByName("Unknown", 1))
                 .thenThrow(new PersonNotFoundException("No person found with name: Unknown"));
 

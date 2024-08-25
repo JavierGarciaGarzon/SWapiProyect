@@ -1,4 +1,5 @@
 package com.diverger.swapi.infrastructure;
+
 import com.diverger.swapi.infrastructure.client.SwapiClient;
 import com.diverger.swapi.infrastructure.response.PeopleSearch;
 import org.junit.jupiter.api.Test;
@@ -8,10 +9,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-public class SwapiClientTests {
+class SwapiClientTests {
 
     @InjectMocks
     private SwapiClient swapiClient;
@@ -24,7 +25,7 @@ public class SwapiClientTests {
     }
 
     @Test
-    public void testGetPersonByName() {
+    void testGetPersonByName() {
         PeopleSearch peopleSearch = new PeopleSearch();
         ResponseEntity<PeopleSearch> responseEntity = ResponseEntity.ok(peopleSearch);
 

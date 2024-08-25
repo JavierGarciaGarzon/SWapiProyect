@@ -6,15 +6,14 @@ import com.diverger.swapi.domain.model.Planet;
 import com.diverger.swapi.domain.model.Starship;
 import com.diverger.swapi.domain.model.Vehicle;
 import com.diverger.swapi.infrastructure.response.PeopleSearch;
-import org.springdoc.core.converters.models.Pageable;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.cache.annotation.Cacheable;
 
 
 @Service
@@ -37,8 +36,8 @@ public class SwapiClient {
     @Cacheable("people")
     public PeopleSearch getPersonByName(String name, Integer page) {
         String url = String.format("%s%s%s", swapiBaseUrl, searchUrl, name);
-        if (page != null){
-            url= String.format("%s&page=%d", url, page);
+        if (page != null) {
+            url = String.format("%s&page=%d", url, page);
         }
         try {
             ResponseEntity<PeopleSearch> response = restTemplate.exchange(
