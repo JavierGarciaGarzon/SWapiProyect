@@ -28,7 +28,7 @@ class PersonControllerTests {
     @Test
     void testGetPersonInfoSuccess() throws Exception {
         PersonInfoResponse personInfo = new PersonInfoResponse();
-        when(personApplicationService.getPersonInfoByName("Luke", 1))
+        when(personApplicationService.getPersonInfoByName("Luke Skywalker", 1))
                 .thenReturn(Collections.singletonList(personInfo));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/swapi-proxy/person-info")

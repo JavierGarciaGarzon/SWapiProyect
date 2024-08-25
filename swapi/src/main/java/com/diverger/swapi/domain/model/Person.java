@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -30,7 +29,7 @@ public class Person {
     private List<String> films;
     private List<String> vehicles;
     private List<String> starships;
-    private LocalDateTime created;
-    private LocalDateTime edited;
+    private String created;
+    private String edited;
     private String url;
 }

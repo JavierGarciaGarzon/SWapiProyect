@@ -26,8 +26,6 @@ public class PersonMapper {
                 .vehicles(vehicleDtos)
                 .starships(starshipDtos)
                 .films(filmDtos)
-                .created(person.getCreated())
-                .edited(person.getEdited())
                 .build();
     }
 

@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -29,8 +28,6 @@ public class PersonDto {
     private List<String> species;
     private String homeworld;
     private String planetName;
-    private LocalDateTime created;
-    private LocalDateTime edited;
     private String url;
 
 }
