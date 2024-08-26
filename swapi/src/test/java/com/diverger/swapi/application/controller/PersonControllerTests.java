@@ -2,7 +2,7 @@ package com.diverger.swapi.application.controller;
 
 import com.diverger.swapi.application.dto.PersonInfoResponse;
 import com.diverger.swapi.application.exception.PersonNotFoundException;
-import com.diverger.swapi.application.service.PersonApplicationService;
+import com.diverger.swapi.application.service.PersonApplicationServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -23,7 +23,7 @@ class PersonControllerTests {
     private MockMvc mockMvc;
 
     @MockBean
-    private PersonApplicationService personApplicationService;
+    private PersonApplicationServiceImpl personApplicationService;
 
     @Test
     void testGetPersonInfoSuccess() throws Exception {

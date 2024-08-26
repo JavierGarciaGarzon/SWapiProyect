@@ -1,9 +1,8 @@
 package com.diverger.swapi.application.service;
 
-import com.diverger.swapi.application.dto.FilmResponse;
 import com.diverger.swapi.application.dto.PersonInfoResponse;
 import com.diverger.swapi.application.mapper.PersonMapper;
-import com.diverger.swapi.domain.service.PersonDomainService;
+import com.diverger.swapi.domain.service.PersonDomainServiceImpl;
 import com.diverger.swapi.infrastructure.dto.PersonDto;
 import com.diverger.swapi.utils.TestDataFactory;
 import org.junit.jupiter.api.Test;
@@ -22,13 +21,13 @@ import static org.mockito.Mockito.when;
 class PersonApplicationServiceTests {
 
     @InjectMocks
-    private PersonApplicationService personApplicationService;
+    private PersonApplicationServiceImpl personApplicationService;
 
     @Mock
     private PersonMapper personMapper;
 
     @Mock
-    private PersonDomainService personDomainService;
+    private PersonDomainServiceImpl personDomainService;
 
     @Test
     void testGetPersonInfoByName() {

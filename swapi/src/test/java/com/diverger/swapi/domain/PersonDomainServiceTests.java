@@ -2,7 +2,7 @@ package com.diverger.swapi.domain;
 
 import com.diverger.swapi.application.exception.PersonNotFoundException;
 import com.diverger.swapi.domain.model.*;
-import com.diverger.swapi.domain.service.PersonDomainService;
+import com.diverger.swapi.domain.service.PersonDomainServiceImpl;
 import com.diverger.swapi.infrastructure.client.SwapiClient;
 import com.diverger.swapi.infrastructure.dto.PersonDto;
 import com.diverger.swapi.infrastructure.response.PeopleSearch;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 class PersonDomainServiceTests {
 
     @InjectMocks
-    private PersonDomainService personDomainService;
+    private PersonDomainServiceImpl personDomainService;
 
     @Mock
     private SwapiClient swapiClient;

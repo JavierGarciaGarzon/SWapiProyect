@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class VehicleDto implements Transport{
+public class VehicleDto implements Transport {
     private String name;
     private int maxAtmospheringSpeed;
 }

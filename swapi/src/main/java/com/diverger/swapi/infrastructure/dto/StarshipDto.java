@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StarshipDto implements Transport{
+public class StarshipDto implements Transport {
     private String name;
     private int maxAtmospheringSpeed;
 }
