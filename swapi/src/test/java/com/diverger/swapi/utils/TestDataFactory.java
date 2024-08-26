@@ -1,5 +1,6 @@
 package com.diverger.swapi.utils;
 
+import com.diverger.swapi.application.dto.FilmResponse;
 import com.diverger.swapi.application.dto.PersonInfoResponse;
 import com.diverger.swapi.application.mapper.PersonMapper;
 import com.diverger.swapi.domain.model.Person;
@@ -98,9 +99,14 @@ public class TestDataFactory {
         return personDto;
     }
 
-    public static PersonInfoResponse createPersonInfoResponse() {
+    public static PersonInfoResponse createPersonInfoResponseFromDto(PersonDto personDto) {
         PersonInfoResponse personInfoResponse = new PersonInfoResponse();
-
+        personInfoResponse.setName(personDto.getName());
+        personInfoResponse.setBirthYear(personDto.getBirthYear());
+        personInfoResponse.setGender(personDto.getGender());
+        personInfoResponse.setFastestVehicleDriven(personDto.getFastestVehicleDriven());
+        personInfoResponse.setPlanetName(personDto.getPlanetName());
+        personInfoResponse.setFilms(Collections.singletonList(new FilmResponse("A New Hope", "1977-05-25")));
         return personInfoResponse;
     }
 }

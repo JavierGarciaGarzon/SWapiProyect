@@ -25,25 +25,20 @@ class PersonApplicationServiceTests {
     private PersonApplicationService personApplicationService;
 
     @Mock
-    private PersonMapper personMapper;  // Mock para el PersonMapper
+    private PersonMapper personMapper;
 
     @Mock
     private PersonDomainService personDomainService;
 
     @Test
     void testGetPersonInfoByName() {
+        // Setting up mock data for Luke Skywalker
         PersonDto personDto = TestDataFactory.createPersonDtoFromJson("src/test/resources/testdata/PersonLuke.json");
 
         when(personDomainService.getPersonInfoByName("Luke Skywalker", 1))
                 .thenReturn(Collections.singletonList(personDto));
 
-        PersonInfoResponse personInfoResponse = new PersonInfoResponse();
-        personInfoResponse.setName(personDto.getName());
-        personInfoResponse.setBirthYear(personDto.getBirthYear());
-        personInfoResponse.setGender(personDto.getGender());
-        personInfoResponse.setFastestVehicleDriven(personDto.getFastestVehicleDriven());
-        personInfoResponse.setPlanetName(personDto.getPlanetName());
-        personInfoResponse.setFilms(Collections.singletonList(new FilmResponse("A New Hope", "1977-05-25")));
+        PersonInfoResponse personInfoResponse = TestDataFactory.createPersonInfoResponseFromDto(personDto);
         when(personMapper.toResponse(personDto)).thenReturn(personInfoResponse);
 
         List<PersonInfoResponse> result = personApplicationService.getPersonInfoByName("Luke Skywalker", 1);
